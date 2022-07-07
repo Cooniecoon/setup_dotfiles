@@ -89,6 +89,8 @@ function install_ros2_foxy() {
 	rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-5.3.1 urdfdom_headers"
 	
 	echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
+	echo "source ~/robot_ws/install/local_setup.bash" >> ~/.bashrc
+
 	echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
 	echo "export _colcon_cd_root=/opt/ros/foxy/" >> ~/.bashrc
 	echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
