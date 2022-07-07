@@ -95,8 +95,8 @@ function install_ros2_foxy() {
 	echo "source ~/robot_ws/install/setup.bash"  >> ~/.bashrc
 	echo "alias cs='cd ~/robot_ws/src'"  >> ~/.bashrc
 	echo "alias cw='cd ~/robot_ws'"  >> ~/.bashrc
-	echo "alias cb='cw && colcon build'"  >> ~/.bashrc
 	echo "alias sb='source ~/.bashrc'"  >> ~/.bashrc
+	echo "alias cb='cw && colcon build && sb'"  >> ~/.bashrc
 	echo "alias eb='gedit ~/.bashrc'"  >> ~/.bashrc
 	export ROS_LOCALHOST_ONLY=0
 	source ~/.bashrc
