@@ -106,6 +106,6 @@ function install_ros2_foxy() {
 	cd ~
 	git config --global user.email hoony3355@gmail.com
 	git config --global user.name cooniecoon
-	echo "alias token_save='git config --unset credential.helper'" >> ~/.bashrc
+	echo "alias token_save='git config credential.helper store'" >> ~/.bashrc
 	source ~/.bashrc
  }
