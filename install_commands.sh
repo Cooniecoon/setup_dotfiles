@@ -1,3 +1,5 @@
+source ./ros2_setup.sh
+
 function install_basic() {
  	sudo apt install -y git cmake vim
 
@@ -32,6 +34,8 @@ function install_slack() {
 	sudo snap install core
 	sudo snap install slack --classic
 }
+
+
 
 function install_ros2_foxy() {
 	# https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
@@ -79,28 +83,15 @@ function install_ros2_foxy() {
 
 	sudo apt install ros-foxy-desktop -y
 
+	ros2_setup foxy
+
 	source /opt/ros/foxy/setup.bash
-	mkdir -p ~/robot_ws/src
-	cd ~/robot_ws
 	colcon build
 
 	sudo rosdep init
 	rosdep update
 	rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-5.3.1 urdfdom_headers"
-	
-	echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
-	echo "source ~/robot_ws/install/local_setup.bash" >> ~/.bashrc
 
-	echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
-	echo "export _colcon_cd_root=/opt/ros/foxy/" >> ~/.bashrc
-	echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
-	echo "source ~/robot_ws/install/setup.bash"  >> ~/.bashrc
-	echo "alias cs='cd ~/robot_ws/src'"  >> ~/.bashrc
-	echo "alias cw='cd ~/robot_ws'"  >> ~/.bashrc
-	echo "alias sb='source ~/.bashrc'"  >> ~/.bashrc
-	echo "alias cb='cw && colcon build && sb'"  >> ~/.bashrc
-	echo "alias eb='gedit ~/.bashrc'"  >> ~/.bashrc
-	export ROS_LOCALHOST_ONLY=0
 	source ~/.bashrc
  }
 
